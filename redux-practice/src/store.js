@@ -9,11 +9,13 @@ const handleList = createSlice({
             state.push({text:action.payload, id:Date.now()});
         },
         deleteList:(state,action)=>
-        state.filter((list)=>list.id!==action.payload),
+        {   console.log(action)
+            return(state.filter((list)=>list.id!==action.payload))
+        }
     }
 })
 
 
 const store = configureStore({reducer:handleList.reducer});
 export default store;
-export const {addList,deleteList} = handleList.actions;
+export const {addList,deleteList} = handleList.actions
